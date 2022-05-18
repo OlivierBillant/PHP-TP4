@@ -15,21 +15,20 @@ include("./traitement.php");
 </head>
 
 <body>
-    <div class="container-fluid">
-
-        <h1>Calculatrice</h1>
+    <div class="col-3 offset-4 my-5" >
+        <h1 class="text-center">Calculatrice</h1>
 
         <form action="" method="post">
             <div class="input-group mb-3">
-                <span class="input-group-text"  id="inputGroup-sizing-default">Premiere valeur</span>
+                <span class="input-group-text" id="inputGroup-sizing-default">Premiere valeur</span>
                 <input type="text" class="form-control" name="premiereValeur" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
 
             <div class="input-group mb-3">
                 <select class="form-select" name="operateur" aria-label="Default select example">
-                        <option selected>Votre operateur</option>
-                    <?php foreach($operateurs as $operateur) : ?>
-                        <option ><?= $operateur ?> </option>
+                    <option selected>Votre operateur</option>
+                    <?php foreach ($operateurs as $operateur) : ?>
+                        <option cmass="text-center"><?= $operateur ?> </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -38,9 +37,16 @@ include("./traitement.php");
                 <span class="input-group-text" id="inputGroup-sizing-default">Seconde valeur</span>
                 <input type="text" class="form-control" name="secondeValeur" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
-            <button type="submit" class="btn btn-primary">Calculer</button>
+            <div class="text-center my-3">
+            <button type="submit" class="btn btn-primary container-fluid" name="submit">Calculer</button>
+            </div>
         </form>
-        <?php ?>
+        <?php if(isset($_POST['premiereValeur']) && isset($_POST['operateur']) && isset($_POST['secondeValeur']) &&isset($result)){ ?>
+        <div class="alert alert-primary text-center" role="alert">
+            <?php echo $result ?>
+        </div>
+        <?php } ?>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
