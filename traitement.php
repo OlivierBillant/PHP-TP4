@@ -2,7 +2,7 @@
 $operateurs = ["+", "-", "x", "/","%","exp"];
 // var_dump($operateurs);
 if((isset($_POST['operateur'])) && isset($_POST['premiereValeur']) && isset($_POST['secondeValeur'])){
-    if(!empty($_POST['operateur']) && !empty($_POST['premiereValeur']) && !empty($_POST['secondeValeur'])){
+    if(!empty($_POST['operateur']) && is_numeric($_POST['premiereValeur']) && is_numeric($_POST['secondeValeur'])){
 $a= $_POST['premiereValeur'];
 $b= $_POST['secondeValeur'];
     switch($_POST['operateur']){
@@ -14,7 +14,7 @@ $b= $_POST['secondeValeur'];
     case "exp" : $result=power($a,$b);break;
 }
 }else{
-    // $result="Pas encore de résultat";
+    // $erreur="Saisir des valeurs valides";
 }
 }
 

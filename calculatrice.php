@@ -15,7 +15,7 @@ include("./traitement.php");
 </head>
 
 <body>
-    <div class="col-3 offset-4 my-5" >
+    <div class="col-3 offset-4 my-5">
         <h1 class="text-center">Calculatrice</h1>
 
         <form action="" method="post">
@@ -38,15 +38,18 @@ include("./traitement.php");
                 <input type="text" class="form-control" name="secondeValeur" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="text-center my-3">
-            <button type="submit" class="btn btn-primary container-fluid" name="submit">Calculer</button>
+                <button type="submit" class="btn btn-primary container-fluid" name="submit">Calculer</button>
             </div>
         </form>
-        <?php if(isset($_POST['premiereValeur']) && isset($_POST['operateur']) && isset($_POST['secondeValeur']) &&isset($result)){ ?>
-        <div class="alert alert-primary text-center" role="alert">
-            <?php echo $result ?>
-        </div>
-        <?php } ?>
-
+        <?php if (isset($_POST['premiereValeur']) && isset($_POST['operateur']) && isset($_POST['secondeValeur']) && isset($result)) { ?>
+            <div class="alert alert-danger text-center" role="alert">
+                <?php echo $result ?>
+            </div>
+        <?php }elseif(isset($erreur)){ ?>
+            <div class="alert alert-danger text-center" role="alert">
+                <?php echo $erreur ?>
+            </div>
+            <?php } ?>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
